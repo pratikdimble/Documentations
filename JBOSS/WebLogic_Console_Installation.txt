@@ -1,0 +1,122 @@
+ADV JAVA[JBOSS_Wildfly Server]:
+============================
+Procedure to Install Wildfly11[JBOSS] Server and to execute web application manually:
+
+JBOSS_Wildfly:
+---------------
+
+1)JBOSS[Wildfly] is an application server provided by JBOSS community.
+
+2)JBOSS[Wildfly] server is able to provide all the middleware services in general what application servers 
+are providing like JNDI,JTA,JAAS,JDBC,JMS,JavaMail,....
+
+3)JBOSS Commuinity has provided JBOSS[Wildfly] server as open source software.
+
+4)The used version of JBOSS[Wildfly] server in Software industry is JBOSS7.x and Wildfly8.x
+
+5)The latest version of JBOSS server is Wildfly11. 
+
+6)JBOSS[Wildfly] Server is compatible with JDK8 and above.
+
+7)Wildfly server has provided JEE7 and above implementation.
+
+8)Wildfly server is able to provide support for servlet3.x version, JSP2.x version,....
+
+9)The default http-port for Wildfly server is 8080[we have to modify it]
+
+10)To use Wildfly Server , we have to use the following steps:
+
+	a)Install Wildfly Server and provide required settings.
+	b)Prepare Web application and its war file
+	c)Start Wildfly server and open Administration Console
+	d)Upload war file and access web application
+
+******************************************************************************************
+
+a)Install Wildfly Server and provide required settings.
+--------------------------------------------------------
+1) download wildfly-11.0.0.Final.zip file from internet[http://wildfly.org/downloads].
+
+2)extract wildfly-11.0.0.Final.zip under 'c' drive then we will find 
+wildfly-11.0.0.Final folder ie Wildfly server "home directory"
+
+3)Change http-port no from 8080 to 2020 in standalone.xml file available under 
+
+		C:\wildfly-11.0.0.Final\standalone\configuration\standalone.xml
+
+4)Add User to Wildfly Server by executing add-user.bat file available under C:\wildfly-11.0.0.Final\bin
+\add-user.bat
+
+	Run add-user.bat file and provide the following details.
+
+		What type of User do you wish to add? 
+
+			a)Management User[mgmt-users.properties]
+			b)Application User[application-users.properties]
+			a)a ---> Enter button.
+
+			Enter the details of the new user to add
+			User Name: pratik
+			password: pratiksoft
+			Aru U sure you want to use the password you entered? yes ---> Enter Button
+			Re-entered Password: pratiksoft
+			Click on Enter button.
+			Write Yes and click on Enter button
+			Write yes and click on Enter button
+			Press any key to exit.... Click on enter button.
+
+******************************************************************************************
+
+b)Prepare Web application and its war file
+------------------------------------------
+helloapp
+||
+|-----WEB-INF
+| |-----web.xml
+|-----classes
+|---HelloServlet.java
+|---HelloServlet.class
+
+To compile the above Java Resources , we have to set classpath env. variable to jboss-servlet-
+api_3.0_spec-1.0.0.Final.jar file available under the following location
+
+C:\wildfly-11.0.0.Final\modules\system\layers\base\javax\servlet\api\main\jboss-servlet-api_3.1_spec-
+1.0.0.Final.jar
+
+E:\my_jboss_apps\helloapp\WEB-INF\classes>set classpath=C:\wildfly-11.0.0.Final\modules\system\layers\base
+\javax\servlet\api\main\jboss-servlet-api_3.1_spec-1.0.0.Final.jar
+
+E:\my_jboss_apps\helloapp\WEB-INF\classes>javac HelloServlet.java
+
+E:\my_jboss_apps\helloapp>jar -cvf helloapp.war *.*
+
+
+******************************************************************************************
+
+c)Start Wildfly server and open Administration Console
+-----------------------------------------------------
+To start Wildfly server , we have to execute standalone.bat file available under C:\wildfly-11.0.0.Final
+\bin\standalone.bat
+
+To open administration console, we have to use the following url at client browser.
+http://localhost:9990/console
+provide user name (pratik) and password (pratiksoft) then we will get Wildfly home page.
+
+
+******************************************************************************************
+
+D)Upload war file and access web application
+---------------------------------------------
+To upload war file , we have to use the following steps.
+	a)Click on "Deployemts" 
+	b)Click on "Add" button.
+	c)Click on "Next" button.
+	d)Click on "Browse" Button and select War file which we prepared.
+	e)Click on "Open" Button.
+	f)Click on "Next" button.
+	g)Click on "Finish" button.
+
+To access the application , Open new tab and use the following URL at address bar 
+http://localhost:2020/helloapp/hello
+
+******************************************************************************************

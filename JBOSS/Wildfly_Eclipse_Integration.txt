@@ -1,0 +1,85 @@
+ADV JAVA[Wildfly_Eclipse_Integration]
+
+Procedure to Integrate Wildfly11 server with Eclipse and Web Application Execution in Eclipse_Wildfly Server:
+
+Configuration of Wildfly Server in Eclipse IDE:
+------------------------------------------------
+1.Open Eclipse IDE
+
+2.Goto Servers Part in Tools.
+
+3.Select Red Hat JBOSS Middleware.
+
+4.Select JBOSS AS, Wildfly, EAP Server Tools.
+
+5.Click on "Next". [Wait few mnts of time here]
+
+6.Select "I Accept the terms of the Licence Agrement" Radio button.
+
+7.Click on "Finish" button. [Wait few mnts of time to restart eclipse].
+
+8.Create Dynamic web project in Eclipse IDE
+	a)Right Cick on Project Explorer.
+	b)Select "New".
+	c)Select "Dynamic Project".
+	d)Provide project Name "app1".
+	e)Click on "New Runtime" in Traget Runtime.
+		1)Select "JBOSS Community".
+		2)Select "Wildfly11 Runtime".
+		3)Click on "Next" button.
+		4)Provide Home Directory by clicking on Browse button
+			Wildfly11.0.0.Final which we extracted under "C" drive.
+		5)Click on "OK" button.
+		6)Click on "Finish" button.
+	f)Use Dynamic web module version 2.5
+	g)Click on "Next" button.
+	h)Click on "Next" buttoin.
+	i)Click on "Finish" button.
+
+9.Prepare Servlet in Project.
+	1.Right Click on "src" under "Java Resources" in Project.
+	2.Select "New" and "Servlet".
+	3.Provide package Name: com.durgasoft.servlets.
+	4.Provide class name: WelcomeServlet
+	5.Click on "Next" button.
+	6.Edit url pattern and provide "welcome" as url pattern.
+	7.Click on "Next" btton.
+	8.Unselect all except "doGet()" method.
+	9.Click on "Finish" button.
+	10.Provide Login in WelcomeServlet.
+
+
+WelcomeServlet.java
+-------------------
+package com.pratik.servlets;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class WelcomeServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws 
+ServletException, IOException {
+response.getWriter().println("<h1>Welcome To Eclipse_JBOSS[Wildfly] Server</h1>");
+}
+}
+
+10.Run Servlet in Eclipse IDE:
+
+1.Click on "Run" Icon in Menu bar.
+
+2.Select "Wildfly11" Under JBOSS Community.
+
+3.Click on "Next" button.
+
+4.Click on "Next" button.
+
+5.Click on "Finish" button.
+
+or right click on servlet.java and run on server
+
+We will get Response on Browser.
+
+**************************************************************************************
