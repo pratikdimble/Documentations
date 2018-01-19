@@ -1,0 +1,35 @@
+Tags And Annotations mapping
+===========================
+<class> ----------------> @Entity,@Table
+<id> ----------------> @Id
+<generator> ------------> @GeneratedValue
+<property> ------------> @Column
+<version > -------------> @Version
+<timestamp> ------------> @Temporal (or) @CreationTimestamp @UpdateTimestamp
+<query> ----------------> @NamedQueries,@NamedQuery
+<sql-query> ------------->@NamedNativeQueries,@NamedNativeQuery
+<composite-id>,<key-property> -------> @EmbeddedId,@Embeddable
+<filter>,<filter-def>,<param> ---->@Filters,@Filter,@FilterDefs,
+@FilterDef,@Parameter
+<component> ---------------> @Embedded,@Embeddable
+
+<joined-subclass>, 
+<subclass>,<union-subclass>
+<descriminator> -------------------> @Inheritence ,@DescriminatorColumn,
+@DescriminatorValue
+<key> --------------> @JoinColumn, @PrimaryKeyJoinColumn
+
+<one-to-one>,
+<one-to-many>,
+<many-to-one>
+<many-to-many> ------------>@OneToOne ,@OneToMany,@ManyToOne,@ManyToMany
+
+<idbag> -------------------> @CollectionId
+<list-index> --------------> @OrderColmn, IndexColumn
+<map-key> -------------> @MapKeyColumn
+
+lazy,fetch,cascade
+inverse attrubes --------> @LazyCollection,@LazyToOne,mappedBy(param),
+cascade (param),@Fetch
+<cache> ------------> @Cache
+<sql-insert>,<sql-update>,<sql-delete> ----> @SQLInsert,@SQLUpdate,@SQLDelete
